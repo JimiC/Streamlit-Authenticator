@@ -64,6 +64,8 @@ class CookieModel:
         """
         try:
             self.cookie_manager.delete(self.cookie_name)
+            if self.cookie_name in st.context.cookies:
+                print("Cookie still exists in browser context.")
         except KeyError as e:
             print(e)
     def get_cookie(self) -> Optional[Dict[str, Any]]:
